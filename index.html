@@ -57,7 +57,6 @@
     <button type="button" class="tab-btn" id="btn-projets" onclick="showTab('projets')">Projets</button>
     <button type="button" class="tab-btn" id="btn-apropos" onclick="showTab('apropos')">À propos de moi</button>
   </nav>
-
   <div class="container">
     <div id="formation" class="tab-content active">
       <h2>Formation</h2>
@@ -89,6 +88,7 @@
         <div class="sub">Mathématiques & Physique-Chimie</div>
       </div>
     </div>
+
     <div id="experience" class="tab-content">
       <h2>Expériences Professionnelles</h2>
       <div class="card">
@@ -111,7 +111,6 @@
         <p>Configuration de postes de travail, maintenance informatique et déploiement d'équipements.</p>
       </div>
     </div>
-
     <div id="projets" class="tab-content">
       <h2>Projets & Réalisations (Cliquez pour voir les détails)</h2>
       <div class="grid">
@@ -163,80 +162,6 @@
       </div>
     </div>
   </div>
-
-  <div id="project-modal" class="modal" onclick="if(event.target===this) closeProject()">
-    <div class="modal-card">
-      <button type="button" class="close-btn" onclick="closeProject()">← Retour aux projets</button>
-      <div id="modal-body"></div>
-    </div>
-  </div>
-
-  <script>
-    const details = {
-      p1: `<h2>Préhenseur robotisé multi-ventouses (Groupe La Poste)</h2>
-           <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Notes de calcul</span><span class="tag">Pneumatique / Venturi</span><span class="tag">Prototypage 3D & Alu</span><span class="tag">Robotique Fanuc</span></div>
-           <div class="modal-sec"><h4>1. Problématique & Cahier des charges</h4><p>Concevoir un préhenseur compact (surface maximale 200 × 200 mm) intégrable sur bras robotique Fanuc, capable de manipuler deux types de colis opposés : des cartons rigides jusqu'à <strong>20 kg</strong> et des sachets plastiques souples (polybags) jusqu'à <strong>3–4 kg</strong>.</p></div>
-           <div class="modal-sec"><h4>2. Étude de marché & Dimensionnement</h4><ul><li>Analyse comparative des technologies et entretiens fournisseurs (Piab, Gimatic, Coval, Igus).</li><li>Création d'une feuille de calcul pour dimensionner le nombre de ventouses, le débit d'air et la dépression selon les accélérations et coefficients de sécurité.</li></ul></div>
-           <div class="modal-sec"><h4>3. Conception & Architecture double circuit</h4><ul><li><strong>Circuit Carton :</strong> 8 ventouses externes réparties en périphérie.</li><li><strong>Circuit Polybag :</strong> 4 ventouses centrales montées sur un <strong>vérin pneumatique</strong> avec guidage linéaire permettant de les déployer uniquement pour les sachets souples.</li><li>Modélisation de plusieurs versions sous SolidWorks (prototypes PLA avec inserts filetés, version manuelle à poignée pour tests de charge, et étude d'une version finale en aluminium mécano-soudé).</li></ul></div>
-           <div class="modal-sec"><h4>4. Résultats des essais</h4><p>Validation du maintien statique sur banc d'essai jusqu'à <strong>10 kg</strong> (inclinaison jusqu'à 45°) et <strong>15 kg</strong> selon l'état de surface du carton.</p></div>`,
-      p2: `<h2>Projets CAO & Fabrication additive (Bureau d'Études La Poste)</h2>
-           <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Impression 3D Multi-couleurs</span><span class="tag">Gestion de production</span><span class="tag">Maintenance imprimantes</span></div>
-           <div class="modal-sec"><h4>1. Figurines humanoïdes Wandercraft (Salon VivaTech)</h4><p>Modification d'un fichier 3D pour stabiliser la figurine et renforcer ses zones fragiles, intégration du logo La Poste en jaune et gestion d'une production optimisée de <strong>24 robots en impression multi-couleurs</strong> (2 séries de 39 h).</p></div>
-           <div class="modal-sec"><h4>2. Mini-série de 12 modules ARPI (Démarche RSE)</h4><p>Organisation et planification de l'impression en série de 12 systèmes de récupération de liquide de nettoyage d'imprimante industrielle (10 pièces par module), permettant de réduire les coûts et les émissions de CO₂.</p></div>
-           <div class="modal-sec"><h4>3. Boîtier d'écran & Trophées Direction Technique</h4><ul><li>Modification sous SolidWorks d'un boîtier pour intégrer les composants électroniques d'un écran de stockage (gestion des fixations et tolérances d'assemblage).</li><li>Modélisation et impression bicolore double buse de 4 trophées engrenage pour un séminaire interne, et remise en état de deux imprimantes 3D Ultimaker du pôle.</li></ul></div>`,
-      p3: `<h2>Panda Drum automatisé & éducatif (Projet d'équipe 4e année)</h2>
-           <div style="margin:0.5rem 0;"><span class="tag">Arduino</span><span class="tag">Mécatronique</span><span class="tag">SolidWorks</span><span class="tag">Électronique & Soudure</span><span class="tag">Impression 3D</span></div>
-           <div class="modal-sec"><h4>1. Objectif du projet</h4><p>Réaliser en équipe un système mécatronique complet autour d'un instrument de percussion (Panda Drum) offrant deux modes : un <strong>mode apprentissage</strong> guidé par LEDs et un <strong>mode automatique</strong> jouant des mélodies programmées.</p></div>
-           <div class="modal-sec"><h4>2. Réalisations techniques</h4><ul><li><strong>Mécanique & CAO :</strong> Conception de la structure porteuse, des bras de frappe et des supports d'actionneurs imprimés en 3D.</li><li><strong>Électronique & Câblage :</strong> Intégration d'une carte Arduino, de moteurs/actionneurs, d'un écran LCD, de boutons de sélection et d'un réseau de LEDs (réalisation des soudures).</li><li><strong>Programmation :</strong> Développement du code Arduino pour piloter l'interface écran, les séquences lumineuses d'apprentissage et le rythme des frappes.</li></ul></div>`,
-      p4: `<h2>Créations personnelles en CAO & Impression 3D</h2>
-          <img src="prehenseur.jpg" alt="CAO Préhenseur">
-          <h3>Préhenseur robotisé multi-ventouses</h3>
-          <p>Conception complète pour bras Fanuc : manutention de colis jusqu'à 20 kg et polybags souples (Stage La Poste).</p>
-          <span class="read-more">Voir l'étude détaillée →</span>
-        </div>
-        <div class="card clickable" onclick="openProject('p2')">
-          <img src="prototype.jpg" alt="Projets 3D La Poste">
-          <h3>Projets CAO & Impression 3D (La Poste)</h3>
-          <p>Figurines Wandercraft (VivaTech), série de 12 modules RSE (ARPI), boîtier d'écran et trophées bicolores.</p>
-          <span class="read-more">Voir l'étude détaillée →</span>
-        </div>
-        <div class="card clickable" onclick="openProject('p3')">
-          <img src="pandadrum.jpg" alt="Panda Drum automatisé">
-          <h3>Panda Drum automatisé & éducatif</h3>
-          <p>Projet d'équipe 4e année Polytech : système mécatronique avec Arduino, moteurs, LEDs d'apprentissage et CAO 3D.</p>
-          <span class="read-more">Voir l'étude détaillée →</span>
-        </div>
-        <div class="card clickable" onclick="openProject('p4')">
-          <img src="impression3d.jpg" alt="Conception et impression 3D">
-          <h3>Créations personnelles CAO & 3D</h3>
-          <p>Conception intégrale sous SolidWorks d'un calendrier perpétuel à rouleaux et de dessous de verre clipsables.</p>
-          <span class="read-more">Voir l'étude détaillée →</span>
-        </div>
-      </div>
-    </div>
-
-    <div id="apropos" class="tab-content">
-      <h2>À propos de moi</h2>
-      <div class="card">
-        <p style="margin-bottom:0.8rem;">Étudiante en 5e année à Polytech Annecy-Chambéry et en échange à l'ÉTS Montréal, je me spécialise en conception mécanique, mécatronique et industrialisation.</p>
-        <p>Curieuse, créative et rigoureuse, je recherche un stage de fin d'études de 6 mois dès février 2027 en Bureau d'Études ou industrialisation.</p>
-      </div>
-      <div class="card">
-        <h3>Compétences & Outils</h3>
-        <div style="margin-top:0.5rem;">
-          <span class="tag">SolidWorks</span><span class="tag">OnShape</span><span class="tag">RDM / Notes de calcul</span>
-          <span class="tag">Impression 3D (FDM / Multi-couleurs)</span><span class="tag">Usinage CN</span><span class="tag">Arduino</span>
-          <span class="tag">Python</span><span class="tag">Matlab</span><span class="tag">Anglais (TOEIC 830)</span>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Contact & Engagements</h3>
-        <p><strong>Responsable Communication BDE (2025-2026) :</strong> Création des visuels Instagram.</p>
-        <p style="margin-top:0.8rem;"><strong>Courriel :</strong> <a href="mailto:leane.leroux95@gmail.com">leane.leroux95@gmail.com</a> | <strong>Tél :</strong> +33 06 41 17 24 73</p>
-      </div>
-    </div>
-  </div>
-
   <div id="project-modal" class="modal" onclick="if(event.target===this) closeProject()">
     <div class="modal-card">
       <button type="button" class="close-btn" onclick="closeProject()">← Retour aux projets</button>
