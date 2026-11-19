@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Léane Leroux — Génie Mécanique & Mécatronique</title>
+  <title>Léane Leroux — Génie Mécanique & Conception</title>
   <style>
     :root {
-      --primary: #d97706;
-      --dark: #1e293b;
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #f59e0b;
+      --dark: #0f172a;
       --text: #334155;
-      --bg: #f8fafc;
+      --bg: #f1f5f9;
       --white: #ffffff;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,228 +21,317 @@
       color: var(--text);
       line-height: 1.6;
     }
+
+    /* PAGE DE GARDE (HERO) */
     header {
-      background: var(--dark);
+      background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
       color: var(--white);
       text-align: center;
-      padding: 4rem 1.5rem;
+      padding: 4.5rem 1.5rem 3.5rem;
     }
-    header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    header .subtitle { font-size: 1.25rem; color: #fbbf24; font-weight: 600; margin-bottom: 0.75rem; }
-    header p { font-size: 1rem; color: #cbd5e1; max-width: 650px; margin: 0 auto 1.5rem; }
-    .btn {
+    header h1 {
+      font-size: 2.8rem;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
+    }
+    .school-info {
+      font-size: 1.15rem;
+      color: #e2e8f0;
+      margin-bottom: 1.5rem;
+    }
+    .search-banner {
       display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--accent);
+      color: #fcd34d;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
+    }
+    .availability {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      margin-bottom: 2rem;
+    }
+    .header-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
       background: var(--primary);
       color: var(--white);
       padding: 0.75rem 1.5rem;
-      border-radius: 6px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      margin: 0.25rem;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
     }
+    .btn:hover { background: var(--primary-dark); }
     .btn-outline {
       background: transparent;
-      border: 2px solid var(--white);
+      border: 2px solid #94a3b8;
+      color: var(--white);
     }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+
+    /* BARRE D'ONGLETS */
+    .tabs-nav {
+      background: var(--white);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #64748b;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      background: #f8fafc;
+      color: var(--primary);
+    }
+    .tab-btn.active {
+      background: #e0f2fe;
+      color: var(--primary-dark);
+    }
+
+    /* CONTENU DES ONGLETS */
     .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
+      max-width: 960px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
     }
-    section {
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
       background: var(--white);
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      margin-bottom: 1.5rem;
     }
     h2 {
       color: var(--dark);
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 0.5rem;
+      font-size: 1.6rem;
       margin-bottom: 1.5rem;
-      font-size: 1.5rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 0.75rem;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
     }
-    .card {
-      border: 1px solid #e2e8f0;
-      padding: 1.25rem;
-      border-radius: 6px;
-      background: #fffbeb;
+    .item-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dark);
     }
-    .card h3 { color: var(--dark); margin-bottom: 0.5rem; }
-    .skill-group { margin-bottom: 1rem; }
-    .skill-group strong { display: block; color: var(--dark); margin-bottom: 0.4rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .tag {
-      background: #fef3c7;
-      color: #92400e;
-      padding: 0.35rem 0.75rem;
+    .item-date {
+      background: #e2e8f0;
+      color: #334155;
+      padding: 0.2rem 0.75rem;
       border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .item-sub {
+      color: var(--primary-dark);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    ul { margin-left: 1.25rem; margin-top: 0.5rem; }
+    li { margin-bottom: 0.35rem; }
+
+    /* BADGES DE COURS ET COMPÉTENCES */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .tag {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #1e293b;
+      padding: 0.35rem 0.8rem;
+      border-radius: 6px;
       font-size: 0.9rem;
       font-weight: 500;
     }
-    .item { margin-bottom: 1.5rem; }
-    .item:last-child { margin-bottom: 0; }
-    .item-header { display: flex; justify-content: space-between; flex-wrap: wrap; font-weight: bold; color: var(--dark); }
-    .item-sub { color: #64748b; font-size: 0.95rem; margin-bottom: 0.4rem; }
-    ul { margin-left: 1.25rem; margin-top: 0.3rem; }
-    footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.9rem; }
+    .course-list {
+      margin-top: 0.75rem;
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+
+    /* GALERIE PROJETS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-box {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-img-placeholder {
+      background: #e2e8f0;
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-weight: 600;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.95rem;
+    }
+    .project-box img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .project-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+    }
+    .project-body h3 {
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
 
+  <!-- PAGE DE GARDE -->
   <header>
     <h1>Léane Leroux</h1>
-    <div class="subtitle">Étudiante en génie mécanique & mécatronique — Ingénieure BE</div>
-    <p>Disponibilité : Stage de fin d'études de 6 mois à partir du 1er mars 2027 | Mobilité France entière</p>
-    <a href="#contact" class="btn">Me contacter</a>
-    <a href="cv.pdf" class="btn btn-outline" target="_blank">Télécharger mon CV (PDF)</a>
+    <div class="school-info">
+      Étudiante à <strong>Polytech Annecy-Chambéry</strong><br>
+      Actuellement en échange universitaire à l'<strong>ÉTS Montréal</strong> (Génie mécanique)
+    </div>
+    <div class="search-banner">
+      Recherche d'un stage de fin d'études en Mécanique / Conception / Bureau d'Études
+    </div>
+    <div class="availability">
+      Disponibilité : 6 mois à partir du 1er mars 2027 • Mobilité France entière
+    </div>
+    <div class="header-actions">
+      <a href="cv.pdf" class="btn" target="_blank">Télécharger mon CV (PDF)</a>
+      <button class="btn btn-outline" onclick="openTab('apropos')">Me contacter</button>
+    </div>
   </header>
+
+  <!-- MENU DES ONGLETS -->
+  <nav class="tabs-nav">
+    <button class="tab-btn active" onclick="openTab('formation')">Formation</button>
+    <button class="tab-btn" onclick="openTab('experience')">Expériences Professionnelles</button>
+    <button class="tab-btn" onclick="openTab('projets')">Projets & Réalisations</button>
+    <button class="tab-btn" onclick="openTab('apropos')">À propos de moi</button>
+  </nav>
 
   <div class="container">
 
-    <section id="apropos">
-      <h2>À propos de moi</h2>
-      <p>Étudiante en 5e année à Polytech Annecy-Chambéry (actuellement en échange universitaire au Canada), je recherche un stage de fin d'études en bureau d'études ou industrialisation. Forte d'une expérience en conception et prototypage de systèmes mécaniques (préhenseur industriel, mécatronique), je souhaite contribuer au développement de produits innovants.</p>
-    </section>
+    <!-- ONGLET 1 : FORMATION -->
+    <div id="formation" class="tab-content active">
+      <h2>Parcours Académique</h2>
 
-    <section id="projets">
-      <h2>Projets & Réalisations</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Préhenseur à ventouses (Logistique)</h3>
-          <p>Conception complète en stage assistant ingénieur : étude de marché, notes de calcul, sélection des fournisseurs, modélisation 3D, prototypage et tests pour la logistique des colis.</p>
+      <div class="card">
+        <div class="item-header">
+          <span class="item-title">Échange Universitaire — Génie Mécanique</span>
+          <span class="item-date">Automne 2026</span>
         </div>
-        <div class="card">
-          <h3>Panda Drum automatisé</h3>
-          <p>Développement d'un système mécatronique permettant l'interprétation automatique de mélodies, intégrant conception mécanique, actionnement, électronique et programmation Arduino.</p>
-        </div>
-        <div class="card">
-          <h3>Conception & Fabrication additive</h3>
-          <p>Modélisation CAO et réalisation par impression 3D (FDM) d'objets fonctionnels et de pièces mécaniques (composants du Panda Drum, calendrier perpétuel, accessoires).</p>
+        <div class="item-sub">École de Technologie Supérieure (ÉTS) — Montréal, Canada</div>
+        <p>Semestre d'échange international axé sur la robotique, l'aérospatiale et les systèmes mécatroniques :</p>
+        <div class="course-list">
+          <ul>
+            <li><strong>MEC788 — Mécatronique :</strong> Conception de systèmes intégrés et modélisation/simulation sous Matlab.</li>
+            <li><strong>AER600 — Introduction à l'aérospatiale :</strong> Propulsion, avionique et certification, aérodynamique (aéronef et forces aérodynamiques), matériaux et structures aéronautiques.</li>
+            <li><strong>GTS504 — Introduction à l'ingénierie de la réadaptation :</strong> Conception biomécanique et dispositifs d'assistance.</li>
+            <li><strong>SYS827 — Systèmes robotiques en contact (A2026) :</strong> Commande en force, interaction robot-environnement et manipulation.</li>
+          </ul>
         </div>
       </div>
-    </section>
 
-    <section id="competences">
-      <h2>Compétences techniques & Langues</h2>
-      <div class="skill-group">
-        <strong>CAO & Simulation :</strong>
+      <div class="card">
+        <div class="item-header">
+          <span class="item-title">Cycle Ingénieur (5e année) — Génie Mécanique</span>
+          <span class="item-date">2024 – 2027</span>
+        </div>
+        <div class="item-sub">Polytech Annecy-Chambéry (74)</div>
+        <p>Formation d'ingénieure généraliste en mécanique, conception de produits et industrialisation :</p>
         <div class="tags">
-          <span class="tag">SolidWorks</span>
-          <span class="tag">OnShape</span>
-          <span class="tag">Modélisation 3D & Assemblages</span>
-          <span class="tag">Mise en plan</span>
-          <span class="tag">Notes de calcul / RDM</span>
+          <span class="tag">Mécanique des matériaux & Composites</span>
+          <span class="tag">Mécanique des fluides</span>
+          <span class="tag">Thermodynamique & Thermique</span>
+          <span class="tag">Automatisation</span>
+          <span class="tag">Métrologie</span>
+          <span class="tag">Design industriel & CAO</span>
+          <span class="tag">Mécatronique & Électronique</span>
         </div>
       </div>
-      <div class="skill-group">
-        <strong>Fabrication & Prototypage :</strong>
-        <div class="tags">
-          <span class="tag">Impression 3D (FDM)</span>
-          <span class="tag">Usinage conventionnel / CN</span>
-          <span class="tag">Lecture de plans</span>
-          <span class="tag">Contrôle de tolérances</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <strong>Mécatronique, Code & Gestion :</strong>
-        <div class="tags">
-          <span class="tag">Arduino</span>
-          <span class="tag">Python</span>
-          <span class="tag">Matlab</span>
-          <span class="tag">Intégration capteurs/actionneurs</span>
-          <span class="tag">Gestion de projet technique</span>
-          <span class="tag">Excel / Suite Office</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <strong>Langues & Qualités :</strong>
-        <div class="tags">
-          <span class="tag">Français (Natif)</span>
-          <span class="tag">Anglais (TOEIC : 830/990)</span>
-          <span class="tag">Attentive & Ponctuelle</span>
-          <span class="tag">Curieuse & Créative</span>
-        </div>
-      </div>
-    </section>
 
-    <section id="experience">
-      <h2>Expériences professionnelles</h2>
-      <div class="item">
+      <div class="card">
         <div class="item-header">
-          <span>Stage assistant ingénieur — Groupe La Poste</span>
-          <span>Mai – Août 2026</span>
+          <span class="item-title">Cycle Préparatoire Ingénieur (PeiP)</span>
+          <span class="item-date">2022 – 2024</span>
         </div>
-        <ul>
-          <li>Conduite d'un projet de préhenseur à ventouses pour la logistique des colis (étude de marché, notes de calcul, achats fournisseurs, modélisation 3D, prototypage et tests).</li>
-          <li>Organisation et réalisation des impressions 3D pour les besoins du service.</li>
-        </ul>
+        <div class="item-sub">Polytech Lille (59)</div>
+        <p>Classes préparatoires intégrées : sciences fondamentales, mathématiques appliquées, physique et introduction aux sciences de l'ingénieur.</p>
       </div>
-      <div class="item">
-        <div class="item-header">
-          <span>Stage ouvrier — ECMU CSR</span>
-          <span>Juin – Juillet 2025</span>
-        </div>
-        <p>Lecture de dessins industriels, usinage d'arbres de guidage, programmation de machines-outils et mesure de tolérances.</p>
-      </div>
-      <div class="item">
-        <div class="item-header">
-          <span>Stage de découverte — Groupe La Poste</span>
-          <span>Juin – Juillet 2023</span>
-        </div>
-        <p>Préparation de la configuration de postes de travail, maintenance informatique et déploiement d'équipements.</p>
-      </div>
-    </section>
 
-    <section id="formation">
-      <h2>Formation & Engagement</h2>
-      <div class="item">
+      <div class="card">
         <div class="item-header">
-          <span>Cycle Ingénieur 5e année (Mécanique) — Polytech Annecy-Chambéry (74)</span>
-          <span>2024 – 2027</span>
+          <span class="item-title">Baccalauréat Général — Section Européenne (Mention Très Bien)</span>
+          <span class="item-date">2022</span>
         </div>
-        <div class="item-sub">Mécanique, mécatronique, industrialisation, électronique (en échange universitaire au Canada).</div>
+        <div class="item-sub">Spécialités Mathématiques et Physique-Chimie</div>
       </div>
-      <div class="item">
-        <div class="item-header">
-          <span>Cycle Préparatoire — Polytech Lille (59)</span>
-          <span>2022 – 2024</span>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-header">
-          <span>Baccalauréat Général (Section Européenne, Mention Très Bien)</span>
-          <span>2022</span>
-        </div>
-        <div class="item-sub">Spécialités Mathématiques et Physique-Chimie.</div>
-      </div>
-      <div class="item">
-        <div class="item-header">
-          <span>Responsable Communication — BDE</span>
-          <span>2025 – 2026</span>
-        </div>
-        <div class="item-sub">Création et gestion des visuels pour le compte Instagram du BDE.</div>
-      </div>
-    </section>
+    </div>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p><strong>Courriel :</strong> <a href="mailto:leane.leroux95@gmail.com">leane.leroux95@gmail.com</a></p>
-      <p><strong>Téléphone :</strong> +33 06 41 17 24 73</p>
-      <p><strong>Localisation :</strong> Puiseux-en-France (95) — Mobilité France entière</p>
-    </section>
-
-  </div>
-
-  <footer>
-    © 2026 Léane Leroux — Génie Mécanique & Mécatronique
-  </footer>
-
-</body>
-</html>
