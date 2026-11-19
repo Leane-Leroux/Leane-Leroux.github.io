@@ -37,6 +37,11 @@
     .modal-sec h4 { color: var(--dark); margin-bottom: 0.35rem; }
     ul { margin-left: 1.2rem; margin-top: 0.4rem; }
     li { margin-bottom: 0.3rem; }
+    .modal-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin-top: 1rem; }
+    .modal-gallery figure { margin: 0; background: #f8fafc; padding: 0.5rem; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; }
+    .modal-gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; display: block; margin-bottom: 0.4rem; }
+    .modal-gallery figcaption { font-size: 0.82rem; color: #475569; font-weight: 600; }
+    .modal-video { width: 100%; max-height: 360px; border-radius: 8px; margin-top: 1rem; background: #000; }
   </style>
 </head>
 <body>
@@ -169,22 +174,39 @@
     </div>
   </div>
 
-  <script>
+    <script>
     const details = {
       p1: `<h2>Préhenseur robotisé multi-ventouses (Groupe La Poste)</h2>
            <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Notes de calcul</span><span class="tag">Pneumatique</span><span class="tag">Prototypage 3D & Alu</span></div>
            <div class="modal-sec"><h4>1. Problématique & Cahier des charges</h4><p>Concevoir un préhenseur compact (surface max 200 × 200 mm) sur bras robotique Fanuc, capable de manipuler des cartons rigides jusqu'à <strong>20 kg</strong> et des sachets plastiques souples (polybags) jusqu'à <strong>3–4 kg</strong>.</p></div>
-           <div class="modal-sec"><h4>2. Étude & Architecture double circuit</h4><ul><li><strong>Circuit Carton :</strong> 8 ventouses externes réparties en périphérie.</li><li><strong>Circuit Polybag :</strong> 4 ventouses centrales montées sur un <strong>vérin pneumatique</strong> avec guidage linéaire pour sortir uniquement sur les sachets souples.</li><li>Dimensionnement par notes de calcul (dépression, débit, accélérations) et modélisation SolidWorks (versions PLA, manuelle à poignée et étude aluminium mécano-soudé).</li></ul></div>
-           <div class="modal-sec"><h4>3. Résultats des essais</h4><p>Maintien statique validé sur banc d'essai jusqu'à <strong>10 kg</strong> (inclinaison jusqu'à 45°) et <strong>15 kg</strong> selon l'état du carton.</p></div>`,
+           <div class="modal-sec"><h4>2. Étude & Architecture double circuit</h4><ul><li><strong>Circuit Carton :</strong> 8 ventouses externes réparties en périphérie.</li><li><strong>Circuit Polybag :</strong> 4 ventouses centrales montées sur un <strong>vérin pneumatique</strong> avec guidage linéaire pour sortir uniquement sur les sachets souples.</li><li>Dimensionnement par notes de calcul (dépression, débit, accélérations) et modélisation SolidWorks (prototypes PLA, version manuelle à poignée et étude aluminium mécano-soudé).</li></ul></div>
+           <div class="modal-sec"><h4>3. Résultats des essais</h4><p>Maintien statique validé sur banc d'essai jusqu'à <strong>10 kg</strong> (inclinaison jusqu'à 45°) et <strong>15 kg</strong> selon l'état du carton.</p></div>
+           <div class="modal-sec"><h4>4. Galerie technique</h4>
+             <div class="modal-gallery">
+               <figure><img src="prehenseur_cao.jpg" alt="CAO SolidWorks"><figcaption>Modélisation 3D SolidWorks</figcaption></figure>
+               <figure><img src="prehenseur_ventouses.jpg" alt="Ventouses"><figcaption>Architecture double circuit ventouses</figcaption></figure>
+               <figure><img src="prehenseur_plan.jpg" alt="Mise en plan"><figcaption>Mise en plan & encombrement</figcaption></figure>
+             </div>
+           </div>`,
       p2: `<h2>Projets CAO & Fabrication additive (Bureau d'Études La Poste)</h2>
            <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Impression 3D Multi-couleurs</span><span class="tag">Gestion de série</span></div>
            <div class="modal-sec"><h4>1. Figurines Wandercraft (Salon VivaTech)</h4><p>Stabilisation et renforcement du modèle 3D, intégration du logo La Poste et production optimisée de <strong>24 robots en impression multi-couleurs</strong> (2 séries de 39 h).</p></div>
            <div class="modal-sec"><h4>2. Mini-série de 12 modules ARPI (RSE)</h4><p>Planification et impression en série de 12 systèmes de récupération de liquide de nettoyage d'imprimante industrielle (10 pièces/module) pour réduire les coûts et les émissions de CO₂.</p></div>
            <div class="modal-sec"><h4>3. Boîtier d'écran, Trophées & Maintenance</h4><p>Adaptation d'un boîtier pour écran de stockage, impression bicolore double buse de 4 trophées engrenage, et remise en service de deux imprimantes 3D Ultimaker.</p></div>`,
       p3: `<h2>Panda Drum automatisé & éducatif (Projet 4e année Polytech)</h2>
-           <div style="margin:0.5rem 0;"><span class="tag">Arduino</span><span class="tag">Mécatronique</span><span class="tag">SolidWorks</span><span class="tag">Électronique & Soudure</span></div>
+           <div style="margin:0.5rem 0;"><span class="tag">Arduino</span><span class="tag">Solénoïdes</span><span class="tag">SolidWorks</span><span class="tag">Électronique & Soudure</span></div>
            <div class="modal-sec"><h4>1. Objectif du projet</h4><p>Concevoir en équipe un système mécatronique autour d'un Panda Drum avec deux modes : un <strong>mode apprentissage</strong> guidé par LEDs et un <strong>mode automatique</strong> jouant une liste de musiques.</p></div>
-           <div class="modal-sec"><h4>2. Réalisations techniques</h4><ul><li><strong>Mécanique :</strong> Modélisation et impression 3D de la structure et des bras de frappe motorisés.</li><li><strong>Électronique & Code :</strong> Intégration Arduino, moteurs, écran LCD, boutons, LEDs, soudures et programmation des séquences.</li></ul></div>`,
+           <div class="modal-sec"><h4>2. Réalisations techniques</h4><ul><li><strong>Actionnement mécanique :</strong> Conception 3D des supports et intégration de <strong>bras actionnés par solénoïdes</strong> pour frapper les lamelles avec précision.</li><li><strong>Électronique & Interface :</strong> Câblage et soudures sur carte Arduino, intégration d'un <strong>écran LCD</strong>, de boutons de sélection et d'un réseau de <strong>LEDs d'apprentissage</strong>.</li></ul></div>
+           <div class="modal-sec"><h4>3. Démonstration vidéo & Détails techniques</h4>
+             <video class="modal-video" controls preload="metadata">
+               <source src="pandadrum.mp4" type="video/mp4">
+             </video>
+             <div class="modal-gallery">
+               <figure><img src="panda_solenoides.jpg" alt="Bras et solénoïdes"><figcaption>Actionnement mécanique par solénoïdes</figcaption></figure>
+               <figure><img src="panda_leds.jpg" alt="LEDs d'apprentissage"><figcaption>Système de guidage par LEDs</figcaption></figure>
+               <figure><img src="panda_ecran.jpg" alt="Écran et électronique"><figcaption>Interface écran, boutons & Arduino</figcaption></figure>
+             </div>
+           </div>`,
       p4: `<h2>Créations personnelles en CAO & Impression 3D</h2>
            <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Impression 3D FDM</span><span class="tag">Prototypage itératif</span></div>
            <div class="modal-sec"><h4>1. Calendrier perpétuel mécanique à rouleaux</h4><p>Conception intégrale sous SolidWorks à partir de zéro : schémas, itérations d'impression pour optimiser le glissement des cylindres et intégration des lettres et chiffres en relief.</p></div>
@@ -201,6 +223,7 @@
       document.getElementById('project-modal').classList.add('open');
     }
     function closeProject() {
+      document.querySelectorAll('video').forEach(v => v.pause());
       document.getElementById('project-modal').classList.remove('open');
     }
   </script>
