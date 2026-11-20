@@ -1,231 +1,1311 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Léane Leroux — Génie Mécanique</title>
-  <style>
-    :root { --primary: #0284c7; --accent: #f59e0b; --dark: #0f172a; --bg: #f1f5f9; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: var(--bg); color: #334155; line-height: 1.6; }
-    header { background: var(--dark); color: #fff; text-align: center; padding: 3.5rem 1rem; }
-    header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    .banner { display: inline-block; border: 1px solid var(--accent); color: #fcd34d; padding: 0.5rem 1.2rem; border-radius: 50px; margin: 1rem 0; font-weight: 600; }
-    .intro { max-width: 680px; margin: 0 auto 1rem; color: #cbd5e1; }
-    .btn { background: var(--primary); color: #fff; padding: 0.7rem 1.3rem; border-radius: 6px; text-decoration: none; border: none; cursor: pointer; font-weight: 600; margin: 0.25rem; display: inline-block; }
-    nav { background: #fff; padding: 0.75rem; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-    .tab-btn { background: none; border: none; padding: 0.6rem 1rem; font-size: 1rem; font-weight: 600; color: #64748b; cursor: pointer; border-radius: 6px; }
-    .tab-btn.active { background: #e0f2fe; color: var(--primary); }
-    .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-    .card { background: #fff; padding: 1.5rem; border-radius: 10px; margin-bottom: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
-    h2 { color: var(--dark); border-left: 4px solid var(--primary); padding-left: 0.7rem; margin-bottom: 1.2rem; }
-    .head { display: flex; justify-content: space-between; flex-wrap: wrap; font-weight: 700; color: var(--dark); }
-    .sub { color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; }
-    .tag { display: inline-block; background: #e2e8f0; padding: 0.25rem 0.7rem; border-radius: 5px; font-size: 0.85rem; margin: 0.2rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.25rem; }
-    .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 6px; margin-bottom: 0.8rem; display: block; }
-    .clickable { cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
-    .clickable:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-    .read-more { display: inline-block; margin-top: 0.6rem; color: var(--primary); font-weight: 600; font-size: 0.9rem; }
-    .modal { display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.75); z-index: 1000; overflow-y: auto; padding: 2rem 1rem; }
-    .modal.open { display: flex; justify-content: center; align-items: flex-start; }
-    .modal-card { background: #fff; max-width: 780px; width: 100%; border-radius: 12px; padding: 2rem; box-shadow: 0 20px 25px rgba(0,0,0,0.2); }
-    .close-btn { background: #e2e8f0; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; cursor: pointer; margin-bottom: 1rem; }
-    .modal-sec { margin-top: 1.1rem; }
-    .modal-sec h4 { color: var(--dark); margin-bottom: 0.35rem; }
-    ul { margin-left: 1.2rem; margin-top: 0.4rem; }
-    li { margin-bottom: 0.3rem; }
-    .modal-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin-top: 1rem; }
-    .modal-gallery figure { margin: 0; background: #f8fafc; padding: 0.5rem; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; }
-    .modal-gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; display: block; margin-bottom: 0.4rem; }
-    .modal-gallery figcaption { font-size: 0.82rem; color: #475569; font-weight: 600; }
-    .modal-video { width: 100%; max-height: 360px; border-radius: 8px; margin-top: 1rem; background: #000; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Léane Leroux</title>
+
+<style>
+:root {
+    --navy: #101d32;
+    --navy-light: #1b2c46;
+    --blue: #3978bd;
+    --blue-light: #eaf2fb;
+    --amber: #e9ad4d;
+    --background: #f5f7fa;
+    --white: #ffffff;
+    --text: #263449;
+    --muted: #718096;
+    --border: #e3e8ef;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* HEADER */
+
+header {
+    background: var(--navy);
+    color: white;
+    padding: 55px 8% 38px;
+}
+
+.header-content {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.header-label {
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+header h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+header h2 {
+    font-size: 19px;
+    font-weight: 400;
+    color: #cbd6e5;
+    margin-bottom: 20px;
+}
+
+.header-description {
+    max-width: 650px;
+    color: #d7e0ed;
+    font-size: 15px;
+}
+
+.header-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 24px;
+}
+
+.header-tags span {
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 6px 13px;
+    font-size: 12px;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.nav-content {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 8%;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    padding: 17px 2px;
+    font-size: 14px;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.nav-button:hover,
+.nav-button.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+}
+
+/* MAIN */
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 48px 8% 80px;
+}
+
+.tab-content {
+    display: none;
+    animation: appear 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(7px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading .eyebrow {
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.section-heading h2 {
+    color: var(--navy);
+    font-size: 29px;
+    margin-top: 5px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    margin-top: 8px;
+    max-width: 650px;
+    font-size: 14px;
+}
+
+/* CARDS */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.project-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(20,40,70,0.09);
+}
+
+.project-image {
+    height: 205px;
+    background: #e9eef4;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-placeholder {
+    color: #8292a6;
+    font-size: 13px;
+    text-align: center;
+    padding: 20px;
+}
+
+.project-info {
+    padding: 21px;
+}
+
+.project-category {
+    color: var(--blue);
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.project-info h3 {
+    color: var(--navy);
+    font-size: 18px;
+    margin: 7px 0;
+}
+
+.project-info p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.project-link {
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* GENERAL CONTENT */
+
+.content-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.content-card h3 {
+    color: var(--navy);
+    margin-bottom: 7px;
+    font-size: 18px;
+}
+
+.content-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.content-card .date {
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 15px;
+}
+
+.skills span {
+    background: var(--blue-light);
+    color: #32669f;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 19, 35, 0.75);
+    z-index: 100;
+    padding: 25px;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 850px;
+    margin: 25px auto;
+    border-radius: 13px;
+    position: relative;
+    overflow: hidden;
+    animation: modalAppear 0.25s ease;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    background: var(--navy);
+    color: white;
+    padding: 35px 40px;
+    padding-right: 75px;
+}
+
+.modal-header .project-category {
+    color: var(--amber);
+}
+
+.modal-header h2 {
+    font-size: 26px;
+    margin-top: 8px;
+    line-height: 1.3;
+}
+
+.modal-header p {
+    color: #cbd6e5;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* Close cross */
+
+.close-modal {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-modal:hover {
+    background: white;
+    color: var(--navy);
+}
+
+.modal-body {
+    padding: 35px 40px 25px;
+}
+
+.modal-section {
+    margin-bottom: 27px;
+}
+
+.modal-section h3 {
+    color: var(--navy);
+    font-size: 17px;
+    margin-bottom: 9px;
+    padding-left: 12px;
+    border-left: 3px solid var(--blue);
+}
+
+.modal-section p {
+    color: #59687b;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.modal-section ul {
+    padding-left: 20px;
+    color: #59687b;
+    font-size: 14px;
+}
+
+.modal-section li {
+    margin-bottom: 6px;
+}
+
+.modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+    margin-top: 15px;
+}
+
+.modal-gallery img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 7px;
+    background: #e9eef4;
+}
+
+.modal-gallery figure {
+    margin: 0;
+}
+
+.modal-gallery figcaption {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+.modal-footer {
+    padding: 15px 40px 30px;
+}
+
+.back-button {
+    background: var(--blue-light);
+    color: var(--blue);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.back-button:hover {
+    background: #d9e8f8;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--navy);
+    color: #cbd6e5;
+    text-align: center;
+    padding: 25px;
+    font-size: 12px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+    header {
+        padding: 40px 6% 30px;
+    }
+
+    .nav-content {
+        padding: 0 5%;
+        gap: 18px;
+        overflow-x: auto;
+    }
+
+    .nav-button {
+        white-space: nowrap;
+        font-size: 13px;
+    }
+
+    main {
+        padding: 35px 6% 60px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-content {
+        margin: 10px auto;
+    }
+
+    .modal-header {
+        padding: 30px 25px;
+        padding-right: 65px;
+    }
+
+    .modal-header h2 {
+        font-size: 22px;
+    }
+
+    .modal-body {
+        padding: 25px;
+    }
+
+    .modal-footer {
+        padding: 10px 25px 25px;
+    }
+
+    .modal-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Léane Leroux</h1>
-    <p>Étudiante à <strong>Polytech Annecy-Chambéry</strong> • En échange à l'<strong>ÉTS Montréal</strong></p>
-    <div class="banner">Recherche d'un stage de fin d'études en Mécanique / Conception / Bureau d'Études</div>
-    <p class="intro">Passionnée par la conception mécanique, le prototypage et la mécatronique, j'accompagne le développement de systèmes techniques de la modélisation 3D jusqu'aux essais sur prototype.</p>
-    <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1.2rem;">Disponibilité : 6 mois à partir de février 2027 (au plus tard le 15 mars 2027) • Mobilité France entière</p>
-    <a href="cv.pdf" class="btn" target="_blank">Télécharger mon CV (PDF)</a>
-    <button type="button" class="btn" onclick="showTab('apropos')">Me contacter</button>
-  </header>
+<header>
+    <div class="header-content">
+        <div class="header-label">Portfolio ingénieur</div>
+        <h1>Léane Leroux</h1>
+        <h2>Élève ingénieure en mécanique et mécatronique</h2>
 
-  <nav>
-    <button type="button" class="tab-btn active" id="btn-formation" onclick="showTab('formation')">Formation</button>
-    <button type="button" class="tab-btn" id="btn-experience" onclick="showTab('experience')">Expériences</button>
-    <button type="button" class="tab-btn" id="btn-projets" onclick="showTab('projets')">Projets</button>
-    <button type="button" class="tab-btn" id="btn-apropos" onclick="showTab('apropos')">À propos de moi</button>
-  </nav>
-  <div class="container">
-    <div id="formation" class="tab-content active">
-      <h2>Formation</h2>
-      <div class="card">
-        <div class="head"><span>Échange Universitaire — Génie Mécanique</span><span>Automne 2026</span></div>
-        <div class="sub">ÉTS Montréal — Canada</div>
-        <ul>
-          <li><strong>MEC788 — Mécatronique :</strong> Systèmes intégrés et simulation sous Matlab.</li>
-          <li><strong>AER600 — Intro à l'aérospatiale :</strong> Propulsion, avionique/certification, aérodynamique, matériaux et structures aéronautiques.</li>
-          <li><strong>GTS504 — Ingénierie de la réadaptation :</strong> Conception biomécanique.</li>
-          <li><strong>SYS827 — Systèmes robotiques en contact (A2026) :</strong> Commande en force et interaction.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="head"><span>Cycle Ingénieur (5e année) — Génie Mécanique</span><span>2024 – 2027</span></div>
-        <div class="sub">Polytech Annecy-Chambéry (74)</div>
-        <div>
-          <span class="tag">Matériaux & Composites</span><span class="tag">Mécanique des fluides</span>
-          <span class="tag">Thermodynamique & Thermique</span><span class="tag">Automatisation</span>
-          <span class="tag">Métrologie</span><span class="tag">Design & CAO</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="head"><span>Cycle Préparatoire Ingénieur (PeiP)</span><span>2022 – 2024</span></div>
-        <div class="sub">Polytech Lille (59)</div>
-      </div>
-      <div class="card">
-        <div class="head"><span>Baccalauréat Général — Section Européenne (Mention TB)</span><span>2022</span></div>
-        <div class="sub">Mathématiques & Physique-Chimie</div>
-      </div>
-    </div>
+        <p class="header-description">
+            Passionnée par la conception mécanique, la robotique et la
+            fabrication, je m'intéresse au développement de solutions
+            techniques, de la réflexion initiale jusqu'au prototypage.
+        </p>
 
-    <div id="experience" class="tab-content">
-      <h2>Expériences Professionnelles</h2>
-      <div class="card">
-        <div class="head"><span>Stage Assistant Ingénieur — Conception & Industrialisation</span><span>Mai – Août 2026</span></div>
-        <div class="sub">Groupe La Poste — Direction Technique (DET)</div>
-        <ul>
-          <li>Conception d'un système de préhension robotisé multi-ventouses pour colis cartonnés (jusqu'à 20 kg) et polybags (3-4 kg) sur bras Fanuc.</li>
-          <li>Réalisation des projets d'impression 3D du pôle Avant-Projets Innovants (VivaTech, série ARPI, boîtiers électroniques) et maintenance du parc Ultimaker.</li>
-        </ul>
-        <button type="button" class="btn" style="margin-top:0.8rem;" onclick="showTab('projets')">Voir les fiches projets détaillées →</button>
-      </div>
-      <div class="card">
-        <div class="head"><span>Stage Ouvrier — Usinage & Production</span><span>Juin – Juillet 2025</span></div>
-        <div class="sub">ECMU CSR</div>
-        <p>Lecture de plans, usinage d'arbres de guidage, programmation CN et contrôle de tolérances.</p>
-      </div>
-      <div class="card">
-        <div class="head"><span>Stage de Découverte</span><span>Juin – Juillet 2023</span></div>
-        <div class="sub">Groupe La Poste</div>
-        <p>Configuration de postes de travail, maintenance informatique et déploiement d'équipements.</p>
-      </div>
+        <div class="header-tags">
+            <span>Conception mécanique</span>
+            <span>Robotique</span>
+            <span>CAO</span>
+            <span>Prototypage</span>
+        </div>
     </div>
-    <div id="projets" class="tab-content">
-      <h2>Projets & Réalisations (Cliquez pour voir les détails)</h2>
-      <div class="grid">
-        <div class="card clickable" onclick="openProject('p1')">
-          <img src="prehenseur.jpg" alt="CAO Préhenseur">
-          <h3>Préhenseur robotisé multi-ventouses</h3>
-          <p>Conception complète pour bras Fanuc : manutention de colis jusqu'à 20 kg et polybags souples (Stage La Poste).</p>
-          <span class="read-more">Voir l'étude détaillée →</span>
-        </div>
-        <div class="card clickable" onclick="openProject('p2')">
-          <img src="prototype.jpg" alt="Projets 3D La Poste">
-          <h3>Projets CAO & Impression 3D (La Poste)</h3>
-          <p>Figurines Wandercraft (VivaTech), série de 12 modules RSE (ARPI), boîtier d'écran et trophées bicolores.</p>
-          <span class="read-more">Voir l'étude détaillée →</span>
-        </div>
-        <div class="card clickable" onclick="openProject('p3')">
-          <img src="pandadrum.jpg" alt="Panda Drum automatisé">
-          <h3>Panda Drum automatisé & éducatif</h3>
-          <p>Projet d'équipe 4e année Polytech : système mécatronique avec Arduino, moteurs, LEDs d'apprentissage et CAO 3D.</p>
-          <span class="read-more">Voir l'étude détaillée →</span>
-        </div>
-        <div class="card clickable" onclick="openProject('p4')">
-          <img src="impression3d.jpg" alt="Conception et impression 3D">
-          <h3>Créations personnelles CAO & 3D</h3>
-          <p>Conception intégrale sous SolidWorks d'un calendrier perpétuel à rouleaux et de dessous de verre clipsables.</p>
-          <span class="read-more">Voir l'étude détaillée →</span>
-        </div>
-      </div>
+</header>
+
+<nav>
+    <div class="nav-content">
+        <button class="nav-button active" onclick="showTab('formation', this)">
+            Formation
+        </button>
+
+        <button class="nav-button" onclick="showTab('experiences', this)">
+            Expériences
+        </button>
+
+        <button class="nav-button" onclick="showTab('projets', this)">
+            Projets
+        </button>
+
+        <button class="nav-button" onclick="showTab('apropos', this)">
+            À propos
+        </button>
+    </div>
+</nav>
+
+<main>
+
+<!-- FORMATION -->
+
+<section id="formation" class="tab-content active">
+
+    <div class="section-heading">
+        <div class="eyebrow">Parcours académique</div>
+        <h2>Formation</h2>
+        <p>
+            Un parcours orienté vers la mécanique, la conception et
+            les systèmes mécatroniques.
+        </p>
     </div>
 
-    <div id="apropos" class="tab-content">
-      <h2>À propos de moi</h2>
-      <div class="card">
-        <p style="margin-bottom:0.8rem;">Étudiante en 5e année à Polytech Annecy-Chambéry et en échange à l'ÉTS Montréal, je me spécialise en conception mécanique, mécatronique et industrialisation.</p>
-        <p>Curieuse, créative et rigoureuse, je recherche un stage de fin d'études de 6 mois dès février 2027 en Bureau d'Études ou industrialisation.</p>
-      </div>
-      <div class="card">
-        <h3>Compétences & Outils</h3>
-        <div style="margin-top:0.5rem;">
-          <span class="tag">SolidWorks</span><span class="tag">OnShape</span><span class="tag">RDM / Notes de calcul</span>
-          <span class="tag">Impression 3D (FDM / Multi-couleurs)</span><span class="tag">Usinage CN</span><span class="tag">Arduino</span>
-          <span class="tag">Python</span><span class="tag">Matlab</span><span class="tag">Anglais (TOEIC 830)</span>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Contact & Engagements</h3>
-        <p><strong>Responsable Communication BDE (2025-2026) :</strong> Création des visuels Instagram.</p>
-        <p style="margin-top:0.8rem;"><strong>Courriel :</strong> <a href="mailto:leane.leroux95@gmail.com">leane.leroux95@gmail.com</a> | <strong>Tél :</strong> +33 06 41 17 24 73</p>
-      </div>
+    <div class="content-card">
+        <div class="date">Formation ingénieur</div>
+        <h3>Polytech Annecy-Chambéry</h3>
+        <p>
+            Cycle ingénieur en mécanique et mécatronique.
+            Formation autour de la conception mécanique, des matériaux,
+            de la robotique et des systèmes industriels.
+        </p>
     </div>
-  </div>
-  <div id="project-modal" class="modal" onclick="if(event.target===this) closeProject()">
-    <div class="modal-card">
-      <button type="button" class="close-btn" onclick="closeProject()">← Retour aux projets</button>
-      <div id="modal-body"></div>
-    </div>
-  </div>
 
-    <script>
-    const details = {
-      p1: `<h2>Préhenseur robotisé multi-ventouses (Groupe La Poste)</h2>
-           <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Notes de calcul</span><span class="tag">Pneumatique</span><span class="tag">Prototypage 3D & Alu</span></div>
-           <div class="modal-sec"><h4>1. Problématique & Cahier des charges</h4><p>Concevoir un préhenseur compact (surface max 200 × 200 mm) sur bras robotique Fanuc, capable de manipuler des cartons rigides jusqu'à <strong>20 kg</strong> et des sachets plastiques souples (polybags) jusqu'à <strong>3–4 kg</strong>.</p></div>
-           <div class="modal-sec"><h4>2. Étude & Architecture double circuit</h4><ul><li><strong>Circuit Carton :</strong> 8 ventouses externes réparties en périphérie.</li><li><strong>Circuit Polybag :</strong> 4 ventouses centrales montées sur un <strong>vérin pneumatique</strong> avec guidage linéaire pour sortir uniquement sur les sachets souples.</li><li>Dimensionnement par notes de calcul (dépression, débit, accélérations) et modélisation SolidWorks (prototypes PLA, version manuelle à poignée et étude aluminium mécano-soudé).</li></ul></div>
-           <div class="modal-sec"><h4>3. Résultats des essais</h4><p>Maintien statique validé sur banc d'essai jusqu'à <strong>10 kg</strong> (inclinaison jusqu'à 45°) et <strong>15 kg</strong> selon l'état du carton.</p></div>
-           <div class="modal-sec"><h4>4. Galerie technique</h4>
-             <div class="modal-gallery">
-               <figure><img src="prehenseur_cao.jpg" alt="CAO SolidWorks"><figcaption>Modélisation 3D SolidWorks</figcaption></figure>
-               <figure><img src="prehenseur_ventouses.jpg" alt="Ventouses"><figcaption>Architecture double circuit ventouses</figcaption></figure>
-               <figure><img src="prehenseur_plan.jpg" alt="Mise en plan"><figcaption>Mise en plan & encombrement</figcaption></figure>
-             </div>
-           </div>`,
-      p2: `<h2>Projets CAO & Fabrication additive (Bureau d'Études La Poste)</h2>
-           <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Impression 3D Multi-couleurs</span><span class="tag">Gestion de série</span></div>
-           <div class="modal-sec"><h4>1. Figurines Wandercraft (Salon VivaTech)</h4><p>Stabilisation et renforcement du modèle 3D, intégration du logo La Poste et production optimisée de <strong>24 robots en impression multi-couleurs</strong> (2 séries de 39 h).</p></div>
-           <div class="modal-sec"><h4>2. Mini-série de 12 modules ARPI (RSE)</h4><p>Planification et impression en série de 12 systèmes de récupération de liquide de nettoyage d'imprimante industrielle (10 pièces/module) pour réduire les coûts et les émissions de CO₂.</p></div>
-           <div class="modal-sec"><h4>3. Boîtier d'écran, Trophées & Maintenance</h4><p>Adaptation d'un boîtier pour écran de stockage, impression bicolore double buse de 4 trophées engrenage, et remise en service de deux imprimantes 3D Ultimaker.</p></div>`,
-      p3: `<h2>Panda Drum automatisé & éducatif (Projet 4e année Polytech)</h2>
-           <div style="margin:0.5rem 0;"><span class="tag">Arduino</span><span class="tag">Solénoïdes</span><span class="tag">SolidWorks</span><span class="tag">Électronique & Soudure</span></div>
-           <div class="modal-sec"><h4>1. Objectif du projet</h4><p>Concevoir en équipe un système mécatronique autour d'un Panda Drum avec deux modes : un <strong>mode apprentissage</strong> guidé par LEDs et un <strong>mode automatique</strong> jouant une liste de musiques.</p></div>
-           <div class="modal-sec"><h4>2. Réalisations techniques</h4><ul><li><strong>Actionnement mécanique :</strong> Conception 3D des supports et intégration de <strong>bras actionnés par solénoïdes</strong> pour frapper les lamelles avec précision.</li><li><strong>Électronique & Interface :</strong> Câblage et soudures sur carte Arduino, intégration d'un <strong>écran LCD</strong>, de boutons de sélection et d'un réseau de <strong>LEDs d'apprentissage</strong>.</li></ul></div>
-           <div class="modal-sec"><h4>3. Démonstration vidéo & Détails techniques</h4>
-             <video class="modal-video" controls preload="metadata">
-               <source src="pandadrum.mp4" type="video/mp4">
-             </video>
-             <div class="modal-gallery">
-               <figure><img src="panda_solenoides.jpg" alt="Bras et solénoïdes"><figcaption>Actionnement mécanique par solénoïdes</figcaption></figure>
-               <figure><img src="panda_leds.jpg" alt="LEDs d'apprentissage"><figcaption>Système de guidage par LEDs</figcaption></figure>
-               <figure><img src="panda_ecran.jpg" alt="Écran et électronique"><figcaption>Interface écran, boutons & Arduino</figcaption></figure>
-             </div>
-           </div>`,
-      p4: `<h2>Créations personnelles en CAO & Impression 3D</h2>
-           <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Impression 3D FDM</span><span class="tag">Prototypage itératif</span></div>
-           <div class="modal-sec"><h4>1. Calendrier perpétuel mécanique à rouleaux</h4><p>Conception intégrale sous SolidWorks à partir de zéro : schémas, itérations d'impression pour optimiser le glissement des cylindres et intégration des lettres et chiffres en relief.</p></div>
-           <div class="modal-sec"><h4>2. Dessous de verre clipsables</h4><p>Modélisation et impression 3D de dessous de verre en deux parties assemblables par clipsage (travail sur les jeux fonctionnels et la souplesse du matériau).</p></div>`
-    };
-    function showTab(id) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      document.getElementById('btn-' + id).classList.add('active');
+    <div class="content-card">
+        <div class="date">Échange universitaire</div>
+        <h3>École de technologie supérieure (ÉTS) – Montréal</h3>
+        <p>
+            Semestre d'échange au Canada, avec des enseignements
+            en ingénierie mécanique, robotique et simulation.
+        </p>
+    </div>
+
+</section>
+
+
+<!-- EXPERIENCES -->
+
+<section id="experiences" class="tab-content">
+
+    <div class="section-heading">
+        <div class="eyebrow">Expérience professionnelle</div>
+        <h2>Expériences</h2>
+        <p>
+            Des expériences mêlant conception, développement de solutions
+            techniques et réalisation de prototypes.
+        </p>
+    </div>
+
+    <div class="content-card">
+        <div class="date">Stage – Groupe La Poste</div>
+        <h3>Direction Technique – Avant-Projets Innovants</h3>
+
+        <p>
+            Conception et développement d'un préhenseur robotisé
+            multi-ventouses destiné à automatiser la manipulation
+            de colis de différentes natures, notamment des cartons
+            et des sacs plastiques.
+        </p>
+
+        <div class="skills">
+            <span>Conception mécanique</span>
+            <span>SolidWorks</span>
+            <span>Dimensionnement</span>
+            <span>Prototypage 3D</span>
+            <span>Robotique industrielle</span>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- PROJETS -->
+
+<section id="projets" class="tab-content">
+
+    <div class="section-heading">
+        <div class="eyebrow">Réalisations</div>
+        <h2>Projets</h2>
+        <p>
+            Quelques projets réalisés dans le cadre de mes études,
+            de mes expériences professionnelles et à titre personnel.
+            Cliquez sur un projet pour en découvrir les détails.
+        </p>
+    </div>
+
+    <div class="project-grid">
+
+        <!-- PROJET 1 -->
+
+        <article class="project-card" onclick="openProject('p1')">
+            <div class="project-image">
+                <img src="images/prehenseur.jpg"
+                     alt="Préhenseur robotisé"
+                     onerror="this.style.display='none';">
+                <div class="image-placeholder">
+                    Image du préhenseur
+                </div>
+            </div>
+
+            <div class="project-info">
+                <div class="project-category">Stage · Robotique</div>
+                <h3>Préhenseur robotisé multi-ventouses</h3>
+                <p>
+                    Conception d'un système de préhension hybride
+                    pour la manipulation automatisée de colis.
+                </p>
+                <span class="project-link">Découvrir le projet →</span>
+            </div>
+        </article>
+
+
+        <!-- PROJET 2 -->
+
+        <article class="project-card" onclick="openProject('p2')">
+            <div class="project-image">
+                <img src="images/impression3d.jpg"
+                     alt="Fabrication additive"
+                     onerror="this.style.display='none';">
+                <div class="image-placeholder">
+                    Image des réalisations 3D
+                </div>
+            </div>
+
+            <div class="project-info">
+                <div class="project-category">Stage · Fabrication</div>
+                <h3>CAO et impression 3D</h3>
+                <p>
+                    Conception et fabrication de pièces et d'objets
+                    destinés à différents projets internes.
+                </p>
+                <span class="project-link">Découvrir le projet →</span>
+            </div>
+        </article>
+
+
+        <!-- PROJET 3 -->
+
+        <article class="project-card" onclick="openProject('p3')">
+            <div class="project-image">
+                <img src="images/panda-drum.jpg"
+                     alt="Panda Drum automatisé"
+                     onerror="this.style.display='none';">
+                <div class="image-placeholder">
+                    Image du Panda Drum
+                </div>
+            </div>
+
+            <div class="project-info">
+                <div class="project-category">Projet étudiant · Mécatronique</div>
+                <h3>Panda Drum automatisé et éducatif</h3>
+                <p>
+                    Développement d'un instrument automatisé
+                    associant mécanique, électronique et programmation.
+                </p>
+                <span class="project-link">Découvrir le projet →</span>
+            </div>
+        </article>
+
+
+        <!-- PROJET 4 -->
+
+        <article class="project-card" onclick="openProject('p4')">
+            <div class="project-image">
+                <img src="images/creations-cao.jpg"
+                     alt="Créations CAO personnelles"
+                     onerror="this.style.display='none';">
+                <div class="image-placeholder">
+                    Images des créations personnelles
+                </div>
+            </div>
+
+            <div class="project-info">
+                <div class="project-category">Personnel · CAO</div>
+                <h3>Créations personnelles en CAO et impression 3D</h3>
+                <p>
+                    Modélisation et réalisation de pièces et objets
+                    à travers différents projets personnels.
+                </p>
+                <span class="project-link">Découvrir le projet →</span>
+            </div>
+        </article>
+
+
+        <!-- PROJET 5 -->
+
+        <article class="project-card" onclick="openProject('p5')">
+            <div class="project-image">
+                <img src="images/matlab-robot.jpg"
+                     alt="Simulation robot ABB IRB 120"
+                     onerror="this.style.display='none';">
+                <div class="image-placeholder">
+                    Image de la simulation MATLAB
+                </div>
+            </div>
+
+            <div class="project-info">
+                <div class="project-category">ÉTS · Robotique</div>
+                <h3>Reproduction robotisée de Can't Help Myself</h3>
+                <p>
+                    Modélisation d'un robot ABB IRB 120 et génération
+                    d'une trajectoire sous MATLAB.
+                </p>
+                <span class="project-link">Découvrir le projet →</span>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+
+<!-- A PROPOS -->
+
+<section id="apropos" class="tab-content">
+
+    <div class="section-heading">
+        <div class="eyebrow">Présentation</div>
+        <h2>À propos</h2>
+    </div>
+
+    <div class="content-card">
+        <h3>Mon profil</h3>
+        <p>
+            Élève ingénieure en mécanique et mécatronique, j'apprécie
+            particulièrement les projets qui permettent de passer
+            d'une idée à une réalisation concrète.
+        </p>
+        <br>
+        <p>
+            Mes expériences m'ont permis de travailler sur des
+            problématiques de conception mécanique, de dimensionnement,
+            de fabrication et de robotique.
+        </p>
+
+        <div class="skills">
+            <span>SolidWorks</span>
+            <span>MATLAB</span>
+            <span>CAO</span>
+            <span>Impression 3D</span>
+            <span>Robotique</span>
+            <span>Conception mécanique</span>
+        </div>
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FENETRE MODALE -->
+
+<div class="modal" id="projectModal" onclick="outsideClick(event)">
+
+    <div class="modal-content">
+
+        <button class="close-modal"
+                onclick="closeProject()"
+                aria-label="Fermer">
+            ×
+        </button>
+
+        <div class="modal-header">
+            <div class="project-category" id="modalCategory"></div>
+            <h2 id="modalTitle"></h2>
+            <p id="modalSubtitle"></p>
+        </div>
+
+        <div class="modal-body" id="modalBody"></div>
+
+        <div class="modal-footer">
+            <button class="back-button" onclick="closeProject()">
+                ← Retour aux projets
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<footer>
+    Portfolio – Léane Leroux
+</footer>
+
+
+<script>
+
+/* CHANGEMENT D'ONGLET */
+
+function showTab(tabId, button) {
+
+    document.querySelectorAll('.tab-content').forEach(section => {
+        section.classList.remove('active');
+    });
+
+    document.querySelectorAll('.nav-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    document.getElementById(tabId).classList.add('active');
+    button.classList.add('active');
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
+/* CONTENU DES FICHES PROJETS */
+
+const details = {
+
+    p1: {
+        category: "Stage · Groupe La Poste",
+        title: "Préhenseur robotisé multi-ventouses",
+        subtitle: "Conception d'un système de préhension hybride pour la manipulation automatisée de colis.",
+
+        body: `
+            <div class="modal-section">
+                <h3>Contexte et objectif</h3>
+                <p>
+                    Dans le cadre de mon stage au sein de la Direction
+                    Technique de La Poste, j'ai travaillé sur la conception
+                    d'un préhenseur destiné à automatiser le dépilage
+                    de colis à l'aide d'un robot industriel Fanuc à six axes.
+                </p>
+                <p>
+                    L'objectif était de développer une solution capable
+                    de manipuler des cartons rigides et des sacs plastiques,
+                    deux types de colis présentant des contraintes
+                    de préhension différentes.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Étude et dimensionnement</h3>
+                <ul>
+                    <li>Étude comparative de solutions proposées par différents fabricants : Gimatic, Piab, Coval, Schmalz, OnRobot et Robotiq.</li>
+                    <li>Réalisation d'un outil de dimensionnement des ventouses prenant en compte les efforts, les accélérations du robot et un coefficient de sécurité.</li>
+                    <li>Étude des besoins en nombre de ventouses et en débit d'air selon différentes configurations de manipulation.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Conception de la solution</h3>
+                <p>
+                    Les solutions standards étudiées ne répondant pas
+                    simultanément aux besoins liés aux cartons et aux sacs,
+                    une architecture spécifique a été envisagée.
+                </p>
+                <ul>
+                    <li>Répartition des ventouses en plusieurs zones pour s'adapter aux différentes dimensions de cartons.</li>
+                    <li>Intégration d'un dispositif central monté sur vérins pneumatiques, dédié à la préhension des sacs plastiques.</li>
+                    <li>Étude de ventouses à soufflet pour compenser les irrégularités des surfaces.</li>
+                    <li>Prise en compte du cheminement des tuyaux pneumatiques et de l'intégration des composants.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Prototypage et essais</h3>
+                <p>
+                    La conception a été réalisée sous SolidWorks,
+                    puis accompagnée de la fabrication de pièces
+                    par impression 3D afin de matérialiser et
+                    d'évaluer certaines parties du dispositif.
+                </p>
+                <p>
+                    Des essais sur des ventouses ont permis de comparer
+                    les capacités de préhension réelles aux résultats
+                    théoriques du dimensionnement.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Compétences mobilisées</h3>
+                <div class="skills">
+                    <span>SolidWorks</span>
+                    <span>Dimensionnement</span>
+                    <span>Pneumatique</span>
+                    <span>Robotique industrielle</span>
+                    <span>Prototypage</span>
+                    <span>Essais</span>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Illustrations</h3>
+                <div class="modal-gallery">
+                    <figure>
+                        <img src="images/prehenseur-cao.jpg" alt="Modèle CAO du préhenseur">
+                        <figcaption>Modélisation du préhenseur</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/prehenseur-prototype.jpg" alt="Prototype du préhenseur">
+                        <figcaption>Prototype et essais</figcaption>
+                    </figure>
+                </div>
+            </div>
+        `
+    },
+
+
+    p2: {
+        category: "Stage · Groupe La Poste",
+        title: "CAO et impression 3D",
+        subtitle: "Conception et fabrication de pièces pour différents projets internes.",
+
+        body: `
+            <div class="modal-section">
+                <h3>Contexte</h3>
+                <p>
+                    En parallèle du projet de préhenseur, j'ai participé
+                    à plusieurs réalisations faisant appel à la conception
+                    et à la fabrication additive.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Réalisations</h3>
+                <ul>
+                    <li>Adaptation et renforcement du modèle 3D du robot humanoïde Calvin de Wandercraft pour la réalisation de figurines promotionnelles.</li>
+                    <li>Intégration du logo La Poste et préparation des pièces pour l'impression 3D.</li>
+                    <li>Participation à la fabrication d'une série de 24 figurines.</li>
+                    <li>Réalisation de pièces pour une mini-série de modules ARPI liés à la récupération du liquide de nettoyage d'une imprimante industrielle.</li>
+                    <li>Conception d'éléments de présentation et de trophées bicolores.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Fabrication et moyens de production</h3>
+                <p>
+                    Ces réalisations m'ont amenée à prendre en compte
+                    les contraintes propres à l'impression 3D :
+                    orientation des pièces, résistance, assemblage,
+                    temps de fabrication et organisation des impressions.
+                </p>
+                <p>
+                    J'ai également participé à la remise en fonctionnement
+                    de deux imprimantes Ultimaker 3 afin d'augmenter
+                    la capacité de fabrication.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Compétences mobilisées</h3>
+                <div class="skills">
+                    <span>CAO</span>
+                    <span>Impression 3D</span>
+                    <span>Préparation fabrication</span>
+                    <span>Prototypage</span>
+                    <span>Organisation de production</span>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Illustrations</h3>
+                <div class="modal-gallery">
+                    <figure>
+                        <img src="images/calvin.jpg" alt="Figurines Calvin">
+                        <figcaption>Figurines promotionnelles</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/objets-impression.jpg" alt="Pièces imprimées">
+                        <figcaption>Pièces réalisées en impression 3D</figcaption>
+                    </figure>
+                </div>
+            </div>
+        `
+    },
+
+
+    p3: {
+        category: "Projet étudiant · Mécatronique",
+        title: "Panda Drum automatisé et éducatif",
+        subtitle: "Développement d'un instrument associant mécanique, électronique et programmation.",
+
+        body: `
+            <div class="modal-section">
+                <h3>Présentation</h3>
+                <p>
+                    Ce projet consiste à développer un Panda Drum automatisé
+                    et éducatif. Il associe plusieurs domaines de l'ingénierie
+                    afin de concevoir un système capable de reproduire
+                    des séquences musicales.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Développement du projet</h3>
+                <p>
+                    Le travail porte sur l'intégration des différents
+                    éléments mécaniques et électroniques, ainsi que
+                    sur la programmation du fonctionnement de l'ensemble.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Compétences mobilisées</h3>
+                <div class="skills">
+                    <span>Mécatronique</span>
+                    <span>Conception mécanique</span>
+                    <span>Électronique</span>
+                    <span>Programmation</span>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Illustrations</h3>
+                <div class="modal-gallery">
+                    <figure>
+                        <img src="images/panda-drum-projet.jpg" alt="Panda Drum">
+                        <figcaption>Projet Panda Drum</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/panda-drum-mecanisme.jpg" alt="Mécanisme">
+                        <figcaption>Conception du système</figcaption>
+                    </figure>
+                </div>
+            </div>
+        `
+    },
+
+
+    p4: {
+        category: "Projets personnels · CAO",
+        title: "Créations personnelles en CAO et impression 3D",
+        subtitle: "Des projets personnels pour expérimenter la modélisation et la fabrication.",
+
+        body: `
+            <div class="modal-section">
+                <h3>Présentation</h3>
+                <p>
+                    En dehors de mes projets académiques et professionnels,
+                    je réalise différentes créations personnelles
+                    en conception assistée par ordinateur et impression 3D.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Démarche</h3>
+                <p>
+                    Ces réalisations me permettent d'explorer des idées,
+                    de concevoir des pièces adaptées à un besoin précis
+                    et de passer rapidement de la modélisation
+                    à la fabrication.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Illustrations</h3>
+                <div class="modal-gallery">
+                    <figure>
+                        <img src="images/creation-1.jpg" alt="Création personnelle 1">
+                        <figcaption>Réalisation personnelle</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/creation-2.jpg" alt="Création personnelle 2">
+                        <figcaption>Modélisation et fabrication</figcaption>
+                    </figure>
+                </div>
+            </div>
+        `
+    },
+
+
+    p5: {
+        category: "Projet universitaire · ÉTS Montréal",
+        title: "Reproduction robotisée de Can't Help Myself",
+        subtitle: "Modélisation et simulation d'une trajectoire robotique sous MATLAB.",
+
+        body: `
+            <div class="modal-section">
+                <h3>Contexte et objectif</h3>
+                <p>
+                    Ce projet réalisé à l'ÉTS consiste à reproduire
+                    le mouvement de l'installation artistique
+                    <em>Can't Help Myself</em> de Sun Yuan et Peng Yu.
+                </p>
+                <p>
+                    L'objectif est de simuler le déplacement d'un robot
+                    équipé d'une raclette, chargée de ramener vers
+                    une zone centrale un liquide présent au sol.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Modélisation du robot</h3>
+                <p>
+                    Le robot utilisé pour la simulation est un
+                    ABB IRB 120 à six axes. Le modèle a été chargé
+                    dans MATLAB, puis complété par l'ajout d'un outil
+                    représentant la raclette.
+                </p>
+                <p>
+                    Cet outil a été modélisé comme un corps rigide
+                    attaché au robot, avec ses éléments géométriques
+                    et ses propriétés de collision.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Génération de trajectoire</h3>
+                <p>
+                    Une trajectoire composée de plusieurs positions
+                    caractéristiques a été définie pour reproduire
+                    le mouvement de nettoyage.
+                </p>
+                <ul>
+                    <li>Déplacement de la raclette en hauteur vers la zone de travail.</li>
+                    <li>Descente verticale jusqu'à proximité du sol.</li>
+                    <li>Déplacement horizontal au contact du sol.</li>
+                    <li>Remontée verticale pour terminer le cycle.</li>
+                </ul>
+                <p>
+                    Les positions et orientations de l'outil sont
+                    définies dans l'espace cartésien. La résolution
+                    de la cinématique inverse permet ensuite de
+                    déterminer les configurations articulaires du robot.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Simulation et dynamique</h3>
+                <p>
+                    Le mouvement est lissé par interpolation afin
+                    d'obtenir une trajectoire continue.
+                </p>
+                <p>
+                    Une étude des efforts a également été engagée
+                    pour représenter les interactions entre la raclette
+                    et le sol, notamment les forces normales et
+                    de frottement. Les couples articulaires sont
+                    ensuite calculés à l'aide du modèle dynamique
+                    du robot.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Outils et compétences</h3>
+                <div class="skills">
+                    <span>MATLAB</span>
+                    <span>Robotique</span>
+                    <span>Cinématique inverse</span>
+                    <span>Trajectoires</span>
+                    <span>Modélisation 3D</span>
+                    <span>Dynamique</span>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Illustrations</h3>
+                <div class="modal-gallery">
+                    <figure>
+                        <img src="images/matlab-robot-modele.jpg" alt="Modèle du robot ABB IRB 120">
+                        <figcaption>Modèle du robot et de son outil</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/matlab-trajectoire.jpg" alt="Trajectoire simulée">
+                        <figcaption>Trajectoire de la raclette</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/matlab-simulation.jpg" alt="Simulation MATLAB">
+                        <figcaption>Simulation du mouvement</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/matlab-forces.jpg" alt="Étude des efforts">
+                        <figcaption>Étude des efforts et des couples</figcaption>
+                    </figure>
+                </div>
+            </div>
+        `
     }
-    function openProject(id) {
-      document.getElementById('modal-body').innerHTML = details[id];
-      document.getElementById('project-modal').classList.add('open');
+
+};
+
+
+/* OUVERTURE D'UN PROJET */
+
+function openProject(projectId) {
+
+    const project = details[projectId];
+
+    if (!project) return;
+
+    document.getElementById('modalCategory').textContent =
+        project.category;
+
+    document.getElementById('modalTitle').textContent =
+        project.title;
+
+    document.getElementById('modalSubtitle').textContent =
+        project.subtitle;
+
+    document.getElementById('modalBody').innerHTML =
+        project.body;
+
+    document.getElementById('projectModal').classList.add('open');
+
+    document.body.style.overflow = 'hidden';
+}
+
+
+/* FERMETURE DE LA FENETRE */
+
+function closeProject() {
+
+    document.getElementById('projectModal').classList.remove('open');
+
+    document.body.style.overflow = '';
+}
+
+
+/* FERMETURE EN CLIQUANT A L'EXTERIEUR */
+
+function outsideClick(event) {
+
+    if (event.target.id === 'projectModal') {
+        closeProject();
     }
-    function closeProject() {
-      document.querySelectorAll('video').forEach(v => v.pause());
-      document.getElementById('project-modal').classList.remove('open');
+}
+
+
+/* FERMETURE AVEC LA TOUCHE ECHAP */
+
+document.addEventListener('keydown', function(event) {
+
+    if (event.key === 'Escape') {
+        closeProject();
     }
-  </script>
+
+});
+
+</script>
+
 </body>
 </html>
