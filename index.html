@@ -27,7 +27,9 @@
     .container { max-width: 920px; margin: 2rem auto; padding: 0 1rem; }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
-    .card { background: var(--white); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .card { position: relative; background: var(--white); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .badge-progress { position: absolute; top: 1rem; right: 1rem; background: #ffedd5; color: #c2410c; border: 1px solid #fdba74; padding: 0.25rem 0.7rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; }
+    .badge-inline { background: #ffedd5; color: #c2410c; border: 1px solid #fdba74; padding: 0.15rem 0.6rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; margin-left: 0.5rem; }
     h2 { color: var(--dark); border-left: 4px solid var(--primary); padding-left: 0.7rem; margin-bottom: 1.2rem; }
     .head { display: flex; justify-content: space-between; flex-wrap: wrap; font-weight: 700; color: var(--dark); }
     .sub { color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; }
@@ -82,7 +84,10 @@
     <div id="formation" class="tab-content active">
       <h2>Formation</h2>
       <div class="card">
-        <div class="head"><span>Échange Universitaire — Génie Mécanique</span><span>Automne 2026</span></div>
+        <div class="head">
+          <span>Échange Universitaire — Génie Mécanique</span>
+          <span>Automne 2026 <span class="badge-inline">En cours</span></span>
+        </div>
         <div class="sub">ÉTS Montréal — Canada</div>
         <ul>
           <li><strong>MEC788 — Mécatronique :</strong> Systèmes intégrés et simulation sous Matlab.</li>
@@ -92,17 +97,21 @@
         </ul>
       </div>
       <div class="card">
-        <div class="head"><span>Cycle Ingénieur (5e année) — Génie Mécanique</span><span>2024 – 2027</span></div>
-        <div class="sub">Polytech Annecy-Chambéry (74)</div>
+        <div class="head"><span>Cycle Ingénieur — Génie Mécanique & Mécatronique</span><span>2024 – 2027</span></div>
+        <div class="sub">Polytech Annecy-Chambéry (74) — Parcours Mécatronique et Industrialisation</div>
         <div>
-          <span class="tag">Matériaux & Composites</span><span class="tag">Mécanique des fluides</span>
-          <span class="tag">Thermodynamique & Thermique</span><span class="tag">Automatisation</span>
-          <span class="tag">Métrologie</span><span class="tag">Design & CAO</span>
+          <span class="tag">Conception mécanique & CAO</span><span class="tag">Modélisation & Éléments Finis (MEF)</span>
+          <span class="tag">Dimensionnement des structures</span><span class="tag">Dynamique des mécanismes & Vibrations</span>
+          <span class="tag">Matériaux métalliques, polymères & composites</span><span class="tag">Éco-conception</span>
+          <span class="tag">Électronique, Capteurs & Motorisation électrique</span><span class="tag">Automatisation & Systèmes embarqués</span>
+          <span class="tag">Thermodynamique & Mécanique des fluides</span><span class="tag">PLM, Qualité & Sûreté de fonctionnement</span>
         </div>
       </div>
+
       <div class="card">
-        <div class="head"><span>Cycle Préparatoire Ingénieur (PeiP)</span><span>2022 – 2024</span></div>
+        <div class="head"><span>Cycle Préparatoire Ingénieur Intégré (PeiP)</span><span>2022 – 2024</span></div>
         <div class="sub">Polytech Lille (59)</div>
+        <p>Formation scientifique pluridisciplinaire : mathématiques, physique, mécanique du point et du solide, thermodynamique, informatique et projets d'ingénierie (conception d'un dispositif de mesure du temps 100 % mécanique).</p>
       </div>
       <div class="card">
         <div class="head"><span>Baccalauréat Général — Section Européenne (Mention TB)</span><span>2022</span></div>
@@ -143,6 +152,7 @@
           <span class="read-more">Voir les étapes, choix techniques et résultats →</span>
         </div>
         <div class="card clickable" onclick="openProject('p5')">
+          <span class="badge-progress">En cours</span>
           <img src="robot_matlab.jpg" alt="Simulation Robot ABB MATLAB">
           <h3>Simulation Robotique & Contact sous MATLAB (ÉTS)</h3>
           <p>Modélisation d'un bras 6 axes ABB IRB 120 reproduisant la trajectoire et les efforts de l'œuvre <em>Can't Help Myself</em>.</p>
@@ -203,11 +213,11 @@
   <script>
     const details = {
       p1: `<h2>Préhenseur robotisé multi-ventouses (Groupe La Poste)</h2>
-           <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Notes de calcul</span><span class="tag">Pneumatique</span><span class="tag">Prototypage 3D & Alu</span><span class="tag">Bras Fanuc</span></div>
-           <div class="modal-sec"><h4>1. Contexte & Contraintes du cahier des charges</h4><p>Concevoir un préhenseur unique pour bras robotique Fanuc M-20iD/12L, contraint dans une surface maximale de <strong>200 × 200 mm</strong>, capable de manipuler deux produits aux comportements opposés : des cartons rigides jusqu'à <strong>20 kg</strong> et des sachets plastiques souples (polybags) jusqu'à <strong>3–4 kg</strong>.</p></div>
-           <div class="modal-sec"><h4>2. Étapes de conception & Choix techniques</h4><ul><li><strong>Étude de marché & Fournisseurs :</strong> Comparatif des solutions (pinces, mousse, aiguilles, ventouses) et entretiens techniques avec Piab, Gimatic, Coval et Igus.</li><li><strong>Dimensionnement :</strong> Création d'une feuille de calcul (dépression, débit, pertes de charge, accélérations robot, coefficients de sécurité) et essais unitaires de ventouses.</li><li><strong>Architecture double circuit :</strong> 8 ventouses externes en périphérie pour les cartons + 4 ventouses centrales dédiées aux polybags montées sur un <strong>vérin pneumatique</strong> avec guidage linéaire pour éviter leur usure sur carton.</li><li><strong>Prototypage itératif :</strong> Version PLA avec inserts filetés M6, version compacte à poignée pour tests manuels de charge, et étude d'une version finale en aluminium mécano-soudé.</li></ul></div>
-           <div class="modal-sec"><h4>3. Difficultés rencontrées & Solutions apportées</h4><ul><li><em>Délai d'approvisionnement du vérin sur mesure :</em> Conception d'un prototype intermédiaire sans vérin équipé d'une poignée ergonomique pour mener immédiatement les campagnes d'essais de charge.</li><li><em>Charge utile limitée du robot d'essai (12 kg) :</em> Mise en place d'un banc d'essai statique hors robot permettant de valider la tenue jusqu'à 15–20 kg en toute sécurité.</li></ul></div>
-           <div class="modal-sec"><h4>4. Résultats concrets</h4><div class="result-box">Maintien statique validé à 100 % jusqu'à <strong>10 kg</strong> (inclinaison de 0° à 45°) et jusqu'à <strong>15 kg</strong> selon l'état de surface du carton, avec identification précise des limites de débit des générateurs Venturi.</div></div>
+           <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Notes de calcul</span><span class="tag">Pneumatique / Venturi</span><span class="tag">Prototypage 3D & Tôlerie Alu</span><span class="tag">Bras Fanuc</span></div>
+           <div class="modal-sec"><h4>1. Contexte & Contraintes du cahier des charges</h4><p>Concevoir un préhenseur unique pour bras robotique Fanuc M-20iD/12L, contraint dans une surface maximale de <strong>200 × 200 mm</strong>, capable de manipuler des cartons rigides jusqu'à <strong>20 kg</strong> et des sachets plastiques souples (polybags) jusqu'à <strong>3–4 kg</strong>.</p></div>
+           <div class="modal-sec"><h4>2. Étapes de conception & Choix techniques</h4><ul><li><strong>Étude de marché & Fournisseurs :</strong> Comparatif des technologies (pinces, mousse, aiguilles, ventouses) et entretiens techniques avec Piab, Gimatic, Coval et Igus (routage externe des flexibles).</li><li><strong>Dimensionnement & Pneumatique :</strong> Feuille de calcul (dépression, débit, pertes de charge, accélérations robot) et arbitrage énergétique entre pompe à vide électrique et générateurs Venturi dédiés par paire de ventouses.</li><li><strong>Architecture double circuit :</strong> 8 ventouses externes en périphérie pour les cartons + 4 ventouses centrales dédiées aux polybags montées sur un <strong>vérin pneumatique</strong> avec guidage linéaire pour éviter leur usure sur carton.</li><li><strong>Prototypage & Allègement :</strong> Prototypes PLA avec inserts filetés M6, version compacte à poignée pour tests manuels, et reconception en <strong>aluminium plié/soudé</strong> (une pièce de 200 g en PLA pesant 800 g en alu massif).</li></ul></div>
+           <div class="modal-sec"><h4>3. Difficultés rencontrées & Solutions apportées</h4><ul><li><em>Délai d'approvisionnement du vérin sur mesure :</em> Conception d'un prototype intermédiaire sans vérin équipé d'une poignée pour mener immédiatement les campagnes d'essais.</li><li><em>Charge utile limitée du robot d'essai (12 kg) :</em> Mise en place d'un banc d'essai statique hors robot pour valider la tenue jusqu'à 15–20 kg en sécurité.</li></ul></div>
+           <div class="modal-sec"><h4>4. Résultats concrets</h4><div class="result-box">Maintien statique validé jusqu'à <strong>10 kg</strong> (inclinaison de 0° à 45°) et <strong>15 kg</strong> selon l'état de surface du carton, avec un niveau de vide mesuré à <strong>-88,1 kPa</strong>.</div></div>
            <div class="modal-sec"><h4>5. Galerie technique</h4>
              <div class="modal-gallery">
                <figure><img src="prehenseur_cao.jpg" alt="CAO SolidWorks"><figcaption>Modélisation 3D SolidWorks</figcaption></figure>
@@ -215,7 +225,7 @@
                <figure><img src="prehenseur_plan.jpg" alt="Mise en plan"><figcaption>Mise en plan (200 × 200 mm)</figcaption></figure>
              </div>
            </div>`,
-
+      
       p5: `<h2>Simulation Robotique & Contact sous MATLAB (ÉTS Montréal)</h2>
            <div style="margin:0.5rem 0;"><span class="tag">MATLAB</span><span class="tag">Robotics System Toolbox</span><span class="tag">Cinématique Inverse</span><span class="tag">Dynamique Inverse</span></div>
            <div class="modal-sec"><h4>1. Objectif du projet</h4><p>Reproduire numériquement sous MATLAB la trajectoire et l'interaction mécanique de l'œuvre cinétique <em>Can't Help Myself</em> (un robot industriel qui racle un liquide au sol) en adaptant le mouvement à un bras 6 axes <strong>ABB IRB 120</strong>.</p></div>
@@ -270,12 +280,45 @@
            <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Impression 3D Multi-couleurs</span><span class="tag">Gestion de production</span><span class="tag">Maintenance</span></div>
            <div class="modal-sec"><h4>1. Figurines humanoïdes Wandercraft (Salon VivaTech)</h4><p>Modification CAO d'un modèle 3D pour améliorer sa stabilité au sol et renforcer ses zones fragiles, intégration du logo La Poste en jaune et gestion d'une production optimisée de <strong>24 robots en impression multi-couleurs</strong> (2 séries de 39 h).</p></div>
            <div class="modal-sec"><h4>2. Mini-série de 12 modules ARPI (Démarche RSE)</h4><p>Planification et suivi de production d'une série de <strong>12 systèmes (comportant une dizaines de piece par module) de récupération</strong> de solvant d'imprimante industrielle (10 pièces/module), permettant d'économiser les consommables et de réduire les émissions de CO₂.</p></div>
-           <div class="modal-sec"><h4>3. Boîtier électronique, Trophées & Parc machines</h4><div class="result-box">Adaptation CAO d'un boîtier d'écran de stockage, impression bicolore double buse de 4 trophées engrenage, prise en main du pole imprssion avec une imprimante principale une H2D eyant deux buses et un AMS ainsi que remise en état de fonctionnement de <strong>deux imprimantes 3D Ultimaker</strong> du bureau d'études.</div></div>`,
+           <div class="modal-sec"><h4>3. Boîtier électronique, Trophées & Parc machines</h4><div class="result-box">Adaptation CAO d'un boîtier d'écran de stockage, impression bicolore double buse de 4 trophées engrenage, prise en main du pole imprssion avec une imprimante principale une H2D ayant deux buses et un AMS ainsi que remise en état de fonctionnement de <strong>deux imprimantes 3D Ultimaker</strong> du bureau d'études.</div></div>`,
 
       p4: `<h2>Créations personnelles en CAO & Impression 3D</h2>
            <div style="margin:0.5rem 0;"><span class="tag">SolidWorks</span><span class="tag">Impression 3D FDM</span><span class="tag">Prototypage itératif</span></div>
            <div class="modal-sec"><h4>1. Calendrier perpétuel mécanique à rouleaux</h4><ul><li><strong>Démarche :</strong> Conception intégrale à partir de zéro (schémas cinématiques, modélisation des cylindres et du bâti sous SolidWorks).</li><li><strong>Difficultés & Solutions :</strong> Plusieurs prototypes imprimés pour ajuster précisément les jeux fonctionnels afin d'obtenir un glissement fluide des rouleaux sans blocage, tout en garantissant la lisibilité des lettres et chiffres en relief.</li></ul></div>
            <div class="modal-sec"><h4>2. Dessous de verre modulaires clipsables</h4><p>Conception en deux parties assemblables par clipsage, en travaillant sur la géométrie des ergots et l'élasticité du PLA pour un maintien ferme sans casse.</p></div>`
+         ,p6: `<h2>Clepsydre à tambour descendant — Mesure du temps 100 % mécanique (Polytech Lille)</h2>
+           <div style="margin:0.5rem 0;"><span class="tag">Mécanique des fluides & Gravité</span><span class="tag">Découpe laser</span><span class="tag">Prototypage itératif</span><span class="tag">Projet Bureau d'Études (3 étudiants)</span></div>
+
+           <div class="modal-sec"><h4>1. Cahier des charges & Principe physique</h4>
+             <p>Projet réalisé en groupe de 3 étudiants en cours de type Bureau d'Études : concevoir une <strong>clepsydre</strong> (horloge à eau ancienne dont le cylindre tourne en descendant lentement le long de deux ficelles) capable de mesurer une durée imposée de <strong>30 minutes</strong> uniquement grâce à l'énergie potentielle de pesanteur, sans moteur ni électronique.</p>
+           </div>
+
+           <div class="modal-sec"><h4>2. Premiers prototypes & Difficultés rencontrées</h4>
+             <ul>
+               <li><strong>Tentative 1 (Impression 3D PLA & Plexiglas) :</strong> Reproduction des modèles historiques (à l'origine en métal soudé), mais l'ensemble s'est révélé <strong>trop lourd et peu fiable</strong>, entraînant une descente trop rapide et irrégulière.</li>
+               <li><strong>Changement d'architecture (Ampoules buvables) :</strong> Remplacement des compartiments imprimés par des <strong>ampoules buvables en verre</strong> (achetées en pharmacie) reliées en circuit fermé par des tubes flexibles légèrement plus larges pour freiner l'écoulement de l'eau.</li>
+             </ul>
+             <div class="modal-gallery">
+               <figure><img src="clepsydre_v1.jpg" alt="1er prototype PLA et plexi"><figcaption>Modèle ancien & 1er prototype PLA/Plexi</figcaption></figure>
+               <figure><img src="clepsydre_ampoules.jpg" alt="Circuit ampoules et tubes"><figcaption>Circuit hydraulique à ampoules buvables</figcaption></figure>
+             </div>
+           </div>
+
+           <div class="modal-sec"><h4>3. Fabrication finale & Étanchéité</h4>
+             <ul>
+               <li><strong>Allègement de la structure :</strong> Découpe de deux flasques circulaires en <strong>bois fin et léger à la découpeuse laser</strong> pour maintenir les ampoules de chaque côté.</li>
+               <li><strong>Étanchéité & Réglage :</strong> Fixation des tuyaux avec des colliers Serflex et du ruban d'étanchéité, remplissage avec le volume d'une ampoule d'eau avant fermeture du circuit.</li>
+               <li><strong>Suspension & Calibrage :</strong> Montage d'un axe central (tige filetée et boulons) avec deux ficelles enroulées aux extrémités dont la longueur détermine exactement la durée de descente depuis un point haut.</li>
+             </ul>
+             <div class="modal-gallery">
+               <figure><img src="clepsydre_finale.jpg" alt="Clepsydre finale bois laser"><figcaption>Prototype final en bois découpé au laser</figcaption></figure>
+             </div>
+           </div>
+
+           <div class="modal-sec"><h4>4. Résultats obtenus</h4>
+             <div class="result-box">Mesure validée sur une durée cible de <strong>30 minutes</strong> avec une précision remarquable de <strong>± 2 minutes</strong> selon les essais, grâce à l'allègement du tambour et au laminage du débit d'eau dans les tubes.</div>
+           </div>`
+
     };
 
     function showTab(id) {
